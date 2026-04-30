@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Ken 😏</title>
+
+<style>
+body {
+    margin: 0;
+    text-align: center;
+    font-family: Arial;
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+    color: white;
+    overflow: hidden;
+}
+
+.card {
+    margin-top: 60px;
+    background: rgba(255,255,255,0.2);
+    padding: 25px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#btnKabur {
+    position: absolute;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>🎉 Selamat Ulang Tahun 🎉</h1>
+    <h2 id="nama">ken imut tapi nyeblin</h2>
+    <p id="pesan">
+        Selamat ya Ken,udah umur nambah aja nieh <br>
+        tapi kamu masih nyebelin, aza ga suka 
+    </p>
+
+    <button onclick="nextPesan()">Klik lanjut 😏</button>
+    <button id="btnKabur" onmouseover="kabur()">Klik kalau bisa 😈</button>
+</div>
+
+<script>
+
+let tahap = 0;
+
+function nextPesan() {
+    let teks = [
+        "Katanya makin tua makin dewasa... tapi kamu kok beda ya 🤔",
+        "Tapi ya jujur aja... tanpa kamu, hidup jadi lebih sepi (dan lebih tenang sih 😌)",
+        "Eh tapi bohong dikit, tetep seru kok kalau ada kamu 🤝",
+        "Makasih udah jadi temen yang baik walaupun sering nyebelin 😄",
+        "Semoga panjang umur, sehat terus, dan semoga...",
+        "...kamu bisa upgrade diri dari 'nyebelin' ke 'lumayan' 😏",
+        "Happy Birthday Ken! 🎂 Jangan berubah... kecuali yang ngeselin 🤣"
+    ];
+
+    if (tahap < teks.length) {
+        document.getElementById("pesan").innerHTML = teks[tahap];
+        tahap++;
+        confetti();
+    } else {
+        alert("Udah ya, jangan berharap aku ngomong manis terus 😌");
+    }
+}
+
+function kabur() {
+    let btn = document.getElementById("btnKabur");
+    btn.style.top = Math.random() * window.innerHeight + "px";
+    btn.style.left = Math.random() * window.innerWidth + "px";
+}
+
+function confetti() {
+    for (let i = 0; i < 30; i++) {
+        let div = document.createElement("div");
+        div.style.position = "fixed";
+        div.style.width = "8px";
+        div.style.height = "8px";
+        div.style.background = "hsl(" + Math.random()*360 + ",100%,50%)";
+        div.style.top = "0";
+        div.style.left = Math.random()*100 + "vw";
+        div.style.opacity = 0.7;
+        div.style.animation = "fall 3s linear";
+        document.body.appendChild(div);
+
+        setTimeout(() => div.remove(), 3000);
+    }
+}
+
+</script>
+
+<style>
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+</style>
+
+</body>
+</html>
